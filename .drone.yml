@@ -16,7 +16,8 @@ steps:
     commands:
       - git submodule update --init --recursive
   - name: Run automated testing
-    image: f05be124b1e6
+    image: hestiacp_dockered
+    pull: never
     commands:
       - ./test/test_helper/bats-core/install.sh /usr/local
       - ./src/hst_autocompile.sh --hestia --install '~localsrc'
