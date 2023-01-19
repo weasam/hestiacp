@@ -1,18 +1,10 @@
 ---
 kind: pipeline
-type: ssh
+type: docker
 name: Ubuntu | Nginx + Apache2
 
 concurrency:
   limit: 1
-
-server:
-  host:
-    from_secret: server_address
-  user:
-    from_secret: username
-  ssh_key:
-    from_secret: ssh_key
 
 platform:
   os: linux
@@ -23,17 +15,12 @@ steps:
     image: alpine/git
     commands:
       - git submodule update --init --recursive
-  - name: Build Hestia package and install
+  - name: Run automated testing
+    image: hestiacp_dockered
     commands:
+      - ./test/test_helper/bats-core/install.sh /usr/local
       - ./src/hst_autocompile.sh --hestia --install '~localsrc'
-  - name: Run system / user tests
-    commands:
       - bats ./test/test.bats
-  - name: Run restore tests
-    commands:
-      - bats ./test/restore.bats
-  - name: Run config tests
-    commands:
       - bats ./test/config-tests.bats
 
 trigger:
