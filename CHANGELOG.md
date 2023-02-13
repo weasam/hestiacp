@@ -4,19 +4,67 @@ All notable changes to this project will be documented in this file.
 
 ## [Development] - Service release
 
+### Note
+
+Very basic mobile support has been added in this release. This is early stages and we'd very much appreciate your feedback and any reporting of bugs, to further improve the mobile experience
+
 ### Breaking changes
 
 - Dropped support for Debian 9 (Stretch) as it reached EOL date (New installs got already dropped with 1.6.0 release)
 
 ### Features
 
+- Add basic mobile support and UI Clean up (#3166 #3141 #3142 #3157 #3155 #3120 and many more)
 - Add support for DNSSEC support for DNS domains (#2938)
+- Add support for Mysql 8 for new Installs (#xxxx @xxxxx)
 - Add support for rate limit exim in packages (#2920)
-- Add support for ssh keys for SFTP (#2906)
+- Add support for ssh keys for SFTP backup (#2906)
+- Added support for backups to AWS, Cloudfare and [+40 other storage systems](https://rclone.org/overview/) (#2928)
+- Add support for importing Cpanel backups (#3238 #3232 @skamasle)
+- Add support for wildcards domain for folders in backup exclusion (#2338 @youradds)
+- Add Nginx template for Mautic (#3192 3188 @youradds)
+- Implement Yarn for automating CSS builds
+- Implement Github workflow for ESlint, Prettier markdownlint
+- Add alias for composer (#3070)
 
 ### Bugfixes
 
+- Make .yaml files editable in the file manager (#3200 @BelleNottelling)
+- Fixed an issue when using search and try to edit a different user. (#3208 #3199)
+- Prevent users to rename directories in /home/user/web/ (#3211)
+- Allow special chars for "Name" field users (#3210)
+- Update DKIM length (#3218)
+- Prevent usernames contain special chars (#3220 #3213)
+- Improve password meter CSS (#3221)
+- Improve restart behaviour v-update-letsencrypt-ssl (#3231)
+- Fix order of applied patches on upgrade (#3239)
+- Improve upgrade behaviour Roundcube and Filegator (#3237 #3236)
+- Allow ClientName@domain.com for login via Dovecot/Email (#3024)
+- Return a proper error code when unable to connect over api (#3235 #3169)
+- Improve how FA webfont path is overridden (#3216)
+- Synchronise $BIN and $HESTIA/BIN (#2185 @Steveorevo)
+- Block usage of unlimited backups (#3181)
+- Update paths /var/run/ to /run (#3159)
+- Update PHP versions on various Quick install apps (#3167 #3149 @dadangnh)
+- Update Media Wiki version to 1.39.1 (#3168 @kizule)
+- Replace custom HTTPS socket code with libcurl (#3160)
+- Add config to avoid restarting daemons on error (#3183 @joeakun)
+- Fixed an issue with default template and Quick installer #3133
+- Generalise password reset instructions. #3112
+- Allow .tpl files to be editable in File Manager (#3148 @neto737)
+- Fix #1750 No www alias for domain.co.uk (#3030)
+- Fix/sync issues existing domains (#3028)
+- 2923 [Bug] Unable to create tmp directory (#3019)
+- Fix issue when enabling mysqld-iptables in Fail2Ban (#3025)
+
 ### Dependencies
+
+- Update hestia-nginx
+- Update hestia-php
+- Update Roundcube
+- Update Filegator
+- Update PHPmyadmin
+-
 
 ## [1.6.14] - Service release
 
